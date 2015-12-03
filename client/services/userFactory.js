@@ -33,8 +33,11 @@ myAppModule.factory('userFactory', function ($http) {
 	}
 
 	factory.getOneUser = function(userId, callback){
+		console.log("The userId is: " + userId)
 		$http.get('/oneUser/' + userId).success(function (output){
-			callback(output)
+			console.log("The current user chosen is: " + output.name)
+			current_user = output
+			callback(current_user)
 		});
 	};
 

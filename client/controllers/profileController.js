@@ -1,8 +1,8 @@
-myAppModule.controller('profileController', ['$scope', '$location', 'userFactory', function ($scope, $location, userFactory){
+myAppModule.controller('profileController', ['$scope', '$location', '$routeParams', 'userFactory', function ($scope, $location, $routeParams, userFactory){
 	$scope.topics = [];
 	$scope.current_user;
 
-	userFactory.getCurrentUser(function (data) {
+	userFactory.getOneUser($routeParams.userId, function (data) {
 		$scope.current_user = data;
 	});
 
