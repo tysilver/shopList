@@ -13,9 +13,6 @@ myAppModule.config(function ($routeProvider, $locationProvider) {
 		// .when('/topic/:id/',{
 		// 	templateUrl: 'views/view3.html'
 		// })
-		// .when('/users/:userId/',{
-		// 	templateUrl: 'views/view2.html'
-		// })
 		.otherwise({
 			redirectTo: '/'
 		});
