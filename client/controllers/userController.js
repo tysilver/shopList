@@ -5,6 +5,7 @@ myAppModule.controller('usersController', ['$scope', '$location', 'userFactory',
 	userFactory.getCurrentUser(function (data){
         $scope.current_user = data;
         if ($scope.current_user) {
+        	console.log("WARNING: USER MUST LOG OUT BEFORE VIEWING HOME PAGE AGAIN.")
             $location.path('/users/' + $scope.current_user._id)
         }
     });
