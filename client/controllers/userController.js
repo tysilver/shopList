@@ -10,6 +10,18 @@ myAppModule.controller('usersController', ['$scope', '$location', 'userFactory',
         }
     });
 
+    $scope.getJohn = function(){
+    	userFactory.getJohn(function () {
+			$location.path('/profile')
+		});
+	}
+
+	$scope.getJane = function(){
+    	userFactory.getJane(function () {
+			$location.path('/profile')
+		});
+	}
+
 	// userFactory.getUsers(function (data){
 	// 	$scope.users = data;
 	// });

@@ -2,9 +2,13 @@ myAppModule.controller('profileController', ['$scope', '$location', '$routeParam
 	$scope.topics = [];
 	$scope.current_user;
 
-	userFactory.getOneUser($routeParams.userId, function (data) {
-		$scope.current_user = data;
-	});
+	userFactory.getCurrentUser(function (data){
+        $scope.current_user = data;
+        if (!$scope.current_user) {
+        	console.log("WARNING: USER MUST LOG IN BEFORE VIEWING PROFILE PAGE AGAIN.")
+            $location.path('/')
+        }
+    });
 
 	// userFactory.getTopics(function (data){
 	// 	$scope.topics = data;

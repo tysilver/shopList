@@ -40,6 +40,20 @@ myAppModule.factory('userFactory', function ($http) {
 			callback(current_user)
 		});
 	};
+	factory.getJohn = function(callback){
+		$http.get('/oneUser/566078c6de4b98d69cff784c').success(function (output){
+			console.log("The current user chosen is: " + output.name)
+			current_user = output
+			callback()
+		});
+	};
+	factory.getJane = function(callback){
+		$http.get('/oneUser/566078ccde4b98d69cff784d').success(function (output){
+			console.log("The current user chosen is: " + output.name)
+			current_user = output
+			callback()
+		});
+	};
 
 	// FOR TOPICS:
 	factory.getTopics = function(callback){
