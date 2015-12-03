@@ -1,11 +1,11 @@
-myAppModule.controller('profileController', ['$scope', '$location', '$routeParams', 'userFactory', function ($scope, $location, $routeParams, userFactory){
+myAppModule.controller('newListController', ['$scope', '$location', '$routeParams', 'userFactory', function ($scope, $location, $routeParams, userFactory){
 	$scope.topics = [];
 	$scope.current_user;
 
 	userFactory.getCurrentUser(function (data){
         $scope.current_user = data;
         if (!$scope.current_user.hasOwnProperty("created_at")) {
-        	console.log("WARNING: USER MUST LOG IN BEFORE VIEWING PROFILE PAGE AGAIN.")
+        	console.log("WARNING: USER MUST LOG IN BEFORE VIEWING LIST CREATION PAGE AGAIN.")
             $location.path('/')
         }
     });

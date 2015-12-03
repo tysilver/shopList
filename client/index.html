@@ -11,17 +11,25 @@
 
 		<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js'/></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+		<script src="/styles.css"></script>
 		<script src="/scripts.js"></script>
 		<script src="/services/userFactory.js"></script>
 		<script src="/controllers/userController.js"></script>
 		<script src="/controllers/profileController.js"></script>
+		<script src="/controllers/newListController.js"></script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="row">
-				<div class="page-header">
-			    	<h1>Example Page Header</h1>      
-			  	</div>
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8">
+					<div class="page-header">
+				    	<h1>My Shopping List</h1>      
+				  	</div>
+				</div>
+				<div class="col-md-2">
+				</div>
 			</div>
 			<div ng-view="">
 		    </div>

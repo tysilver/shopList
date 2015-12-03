@@ -6,13 +6,14 @@ myAppModule.config(function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/view1.html',
 			controller: 'usersController'
 		})
-		.when('/users/:userId',{
+		.when('/profile',{
 			templateUrl: 'views/view2.html',
 			controller: 'profileController'
 		})
-		// .when('/topic/:id/',{
-		// 	templateUrl: 'views/view3.html'
-		// })
+		.when('/newlist',{
+			templateUrl: 'views/view3.html',
+			controller: 'newListController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

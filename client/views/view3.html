@@ -1,0 +1,60 @@
+<div class="row">
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-5">
+		<h2 style="margin-top: 0px">{{current_user.name.split(" ")[0]}}, make a new list!</h2>
+	</div>
+	<div class="col-md-2">
+		<button ng-click="logout()" class="btn btn-primary">Logout</button>
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+<form class="form-horizontal">
+	<div class="row" style="margin-top: 10px">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-4">
+			<input type="text" class="form-control" placeholder="List title:" ng-model="newList.title">
+		</div>
+		<div class="col-md-5">
+		</div>
+	</div>
+	<div class="row" style="margin-top: 10px">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-4">
+			<div style="height: 200px; border: 1px solid black; overflow: auto; margin-bottom: 10px">
+				<!-- <p ng-repeat=""></p> -->
+			</div>
+		</div>
+		<div class="col-md-2">
+			<button ng-click="saveList()" class="btn btn-danger">Save List</button>
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
+</form>
+<form class="form-horizontal">
+	<div class="row" style="margin-top: 10px">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-4" style="margin-bottom: 10px">
+			<input type="text" class="form-control" placeholder="Enter a new list item here:" ng-model="newItem.name">
+		</div>
+		<div class="col-md-2">
+			<button ng-click="addItem()" class="btn btn-success">Add Item</button>
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
+</form>
+<div class="row" style="margin-top: 10px">
+		<div class="col-md-5">
+		</div>
+		<div class="col-md-2" style="margin-bottom: 10px">
+			<a href="#/profile" class="btn btn-default">Cancel</a>
+		</div>
+		<div class="col-md-5">
+		</div>
+	</div>

@@ -1,7 +1,7 @@
 myAppModule.factory('userFactory', function ($http) {
 	var factory = {};
 	var users = [];
-	var current_user;
+	var current_user = {}
 	var topics = [];
 	var current_topic_posts = [];
 
@@ -44,14 +44,14 @@ myAppModule.factory('userFactory', function ($http) {
 		$http.get('/oneUser/566078c6de4b98d69cff784c').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
-			callback()
+			callback(current_user)
 		});
 	};
 	factory.getJane = function(callback){
 		$http.get('/oneUser/566078ccde4b98d69cff784d').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
-			callback()
+			callback(current_user)
 		});
 	};
 
@@ -118,7 +118,7 @@ myAppModule.factory('userFactory', function ($http) {
 	};
 
 	factory.logout = function(){
-		$current_user = {};
+		current_user = {};
 	}
 
 	return factory;

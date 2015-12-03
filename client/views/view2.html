@@ -1,18 +1,25 @@
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-3">
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-4">
+		<h2 style="margin-top: 0px">Welcome, {{current_user.name.split(" ")[0]}}!</h2>
+	</div>
+	<div class="col-md-1">
 	</div>
 	<div class="col-md-2">
-		<a href="#" ng-click="logout()" class="btn btn-primary">Logout</a>
+		<button ng-click="logout()" class="btn btn-primary">Logout</button>
+	</div>
+	<div class="col-md-2">
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-1">
+	<div class="col-md-3">
 	</div>
-	<div class="col-md-10">
-		<h1>{{current_user.name.split(" ")[0]}}</h1>
+	<div class="col-md-2" style="margin-top: 20px">
+		<a href="#/newlist" class="btn btn-success">Create a New List</a>
 	</div>
-	<div class="col-md-1">
+	<div class="col-md-4" style="border: 1px solid black; height: 200px; overflow: auto; margin-top: 20px">
+	</div>
+	<div class="col-md-2">
 	</div>
 </div>
