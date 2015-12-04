@@ -60,6 +60,8 @@ myAppModule.factory('userFactory', function ($http) {
 		$http.get('/lists/' + current_user._id).success(function (output){
 			lists = [];
 			for (var i = 0; i < output.length; i++) {
+				var d = new Date(output[i].created_at);
+                output[i].dateString = setDate(d);
 				lists.push(output[i]);
 			}
 			callback(lists);

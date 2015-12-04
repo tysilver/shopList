@@ -19,7 +19,7 @@
 		<a href="#/newlist" class="btn btn-success">Create a New List</a>
 	</div>
 	<div class="col-md-4" style="border: 1px solid black; height: 200px; overflow: auto; margin-top: 20px">
-		<p ng-repeat="list in lists">{{list.title}}</p>
+		<p ng-repeat="list in lists | orderBy: 'created_at':true">{{list.title}} - {{list.dateString}}</p>
 	</div>
 	<div class="col-md-2">
 	</div>
