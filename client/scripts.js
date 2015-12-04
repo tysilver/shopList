@@ -14,6 +14,14 @@ myAppModule.config(function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/view3.html',
 			controller: 'newListController'
 		})
+		.when('/list/:listId',{
+			templateUrl: 'views/view4.html',
+			controller: 'listController'
+		})
+		.when('/edit/list/:listId',{
+			templateUrl: 'views/view5.html',
+			controller: 'editListController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

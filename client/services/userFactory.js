@@ -6,17 +6,17 @@ myAppModule.factory('userFactory', function ($http) {
 	var current_topic_posts = [];
 
 	// FOR USERS:
-	factory.getUsers = function(callback){
-		$http.get('/users').success(function (output){
-			if (users.length < 1) {
-				for (var i = 0; i < output.length; i++) {
-					users.push(output[i]);
-				}
-			}
-			callback(users);
-		});
-		return users;
-	};
+	// factory.getUsers = function(callback){
+	// 	$http.get('/users').success(function (output){
+	// 		if (users.length < 1) {
+	// 			for (var i = 0; i < output.length; i++) {
+	// 				users.push(output[i]);
+	// 			}
+	// 		}
+	// 		callback(users);
+	// 	});
+	// 	return users;
+	// };
 
 	factory.addUser = function(info, callback) {
 		console.log("The info before we post to newUser is: ")
@@ -68,6 +68,12 @@ myAppModule.factory('userFactory', function ($http) {
 		});
 	};
 
+	factory.getCurrentList = function(listId, callback){
+		$http.get('/oneList/' + listId).success(function (output){
+			callback(output)
+		});
+	};
+
 	factory.addList = function(info, callback) {
 		$http.post('/newList/' + current_user._id, {info}).success(function (output){
 			lists.push(output);
@@ -75,50 +81,56 @@ myAppModule.factory('userFactory', function ($http) {
 		});
 	};
 
-	factory.getOneTopic = function(topic_id, callback){
-		$http.get('/oneTopic/' + topic_id).success(function (output){
-			callback(output)
+	factory.updateList = function(info, callback) {
+		console.log(info)
+		$http.post('/updateList/' + current_user._id, {info}).success(function (output){
+			lists = [];
+			for (var i = 0; i < output.length; i++) {
+				lists.push(output[i])
+			}
+			callback()
 		});
 	};
 
-	factory.removeTopic = function(info) {
-		$http.post('/removeTopic', {info});
-		topics.splice(topics.indexOf(info), 1)
+	factory.deleteList = function(list) {
+		$http.post('/removeList', {list}).success(function (output){
+			console.log("successful deletion!")
+		})
 	};
 
 	// FOR POSTS:
-	factory.addPost = function(info, callback) {
-		$http.post('/newPost/' + info.topic_id, {info}).success(function (output){
-			callback(output);
-		});
-	};
+	// factory.addPost = function(info, callback) {
+	// 	$http.post('/newPost/' + info.topic_id, {info}).success(function (output){
+	// 		callback(output);
+	// 	});
+	// };
 
-	factory.getCurrentTopicPosts = function(info, callback) {
-		// grab ALL of the comments with the get request above.
-		$http.get('/topicPosts/' + info._id, {info}).success(function (output) {
-			current_topic_posts = [];
-			for (var i = 0; i < output.length; i ++) {
-				// CREATE A LOOP IN HERE THAT ADDS EACH COMMENT TO A POST, AND THEN PUSHES THE POST (output[i])
-				// INTO current_topic_posts IN THE FACTORY
-				current_topic_posts.push(output[i]);
-			}
-			callback(current_topic_posts);
-		});
-	};
+	// factory.getCurrentTopicPosts = function(info, callback) {
+	// 	// grab ALL of the comments with the get request above.
+	// 	$http.get('/topicPosts/' + info._id, {info}).success(function (output) {
+	// 		current_topic_posts = [];
+	// 		for (var i = 0; i < output.length; i ++) {
+	// 			// CREATE A LOOP IN HERE THAT ADDS EACH COMMENT TO A POST, AND THEN PUSHES THE POST (output[i])
+	// 			// INTO current_topic_posts IN THE FACTORY
+	// 			current_topic_posts.push(output[i]);
+	// 		}
+	// 		callback(current_topic_posts);
+	// 	});
+	// };
 
-	factory.addComment = function(info, callback) {
-		$http.post('/addComment', {info}).success(function (output) {
-			console.log("This should be the return of the comment after adding to db: ")
-			console.log(output)
-			callback(output);
-		});
-	};
+	// factory.addComment = function(info, callback) {
+	// 	$http.post('/addComment', {info}).success(function (output) {
+	// 		console.log("This should be the return of the comment after adding to db: ")
+	// 		console.log(output)
+	// 		callback(output);
+	// 	});
+	// };
 
-	factory.getComments = function(callback) {
-		$http.get('/getAllComments').success(function (output) {
-			callback(output);
-		});
-	};
+	// factory.getComments = function(callback) {
+	// 	$http.get('/getAllComments').success(function (output) {
+	// 		callback(output);
+	// 	});
+	// };
 
 	factory.logout = function(){
 		current_user = {};

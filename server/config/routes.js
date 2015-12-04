@@ -23,25 +23,13 @@ module.exports = function(app){
 	app.get('/lists/:userId', function (req, res){
 		lists.get_all(req, res);
 	});
-	// app.get('/oneTopic/:topic_id', function (req, res){
-	// 	topics.get_one(req, res);
-	// });
-	// app.get('/newestTopic', function (req, res){
-	// 	topics.get_newest(req, res)
-	// });
-	// app.post('/removeTopic', function (req, res){
-	// 	topics.remove(req, res);
-	// });
-	// app.post('/newPost/:topicId', function (req, res){
-	// 	posts.add(req, res);
-	// });
-	// app.get('/topicPosts/:topicId', function (req, res){
-	// 	posts.getPosts(req, res);
-	// });
-	// app.post('/addComment', function (req, res){
-	// 	comments.add(req, res);
-	// });
-	// app.get('/getAllComments', function (req, res){
-	// 	comments.getAll(req, res);
-	// });
+	app.get('/oneList/:listId', function (req, res){
+		lists.get_one(req, res);
+	});
+	app.post('/updateList/:userId', function (req, res){
+		lists.update_one(req, res);
+	});
+	app.post('/removeList', function (req, res){
+		lists.remove(req, res);
+	});
 }

@@ -47,27 +47,43 @@ module.exports = (function(){
 				}
 			})
 		},
-	// 	get_one: function(req, res){
-	// 		User.findOne({_id: req.params.user_id}, function (err, data){
-	// 			if (err) {
-	// 				console.log("we got errors getting one user");
-	// 			} else {
-	// 				console.log("We got the one user!")
-	// 				res.json(data);
-	// 			}
-	// 		});
-	// 	},
-	// 	newest: function(req, res) {
-	// 		User.findOne({}, {}, { sort: { 'created_at' : -1 } }, function (err, data) {
-	// 			if (err) {
-	// 				console.log("We got an error finding the newest user.")
-	// 			} else {
-	// 				console.log(data)
-	// 				console.log(" - That was the newest user.")
-	// 				res.json(data)
-	// 			}
-	// 		});
-	// 	}
+		get_one: function(req, res){
+			List.findOne({_id: req.params.listId}, function (err, data){
+				if (err) {
+					console.log("we got errors getting one list");
+				} else {
+					console.log("We got the one list!")
+					res.json(data);
+				}
+			});
+		},
+		update_one: function(req, res){
+			List.update({_id: req.body.info._id}, {title: req.body.info.title, items: req.body.info.items}, function(err, list) {
+				if(err) {
+					console.log("We have some errors to deal with getting the list...")
+				} else {
+					console.log(list)
+					List.find({}, function (error, lists){
+						if (error) {
+							console.log("Error finding all lists")
+						} else {
+							console.log("Got all lists!")
+							res.json(lists);
+						}
+					})
+				}
+			});
+		},
+		remove: function(req, res) {
+			List.remove({_id: req.body.list._id}, function (err, data) {
+				if (err) {
+					console.log("We got an error removing the list.")
+				} else {
+					console.log(" - That was the list we removed?")
+					res.json(data)
+				}
+			});
+		}
 	}
 })();
 

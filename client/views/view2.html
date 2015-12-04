@@ -36,8 +36,8 @@
 	<div class="col-md-4">
 		<div style="border: 1px solid black; height: 300px; overflow: auto; margin-top: 10px; padding: 15px 0px 0px 5px">
 			<div ng-repeat="list in lists | filter:list_filter | orderBy: 'created_at':true">
-				<p>{{list.title}} <span style="color: grey">- {{list.dateString}}</span></p>
-				<p><button type="button" class="btn btn-primary btn-xs">Edit</button><button style="margin-left: 5px" type="button" class="btn btn-danger btn-xs">Delete</button><p>
+				<p><a href="#/list/{{list._id}}">{{list.title}}</a><span style="color: grey">- {{list.dateString}}</span></p>
+				<p><a href="#/edit/list/{{list._id}}" class="btn btn-primary btn-xs">Edit</a><button style="margin-left: 5px" type="button" class="btn btn-danger btn-xs" ng-click="deleteList(list)">Delete</button><p>
 				<hr>
 			</div>
 		</div>
