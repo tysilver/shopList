@@ -16,10 +16,31 @@
 	<div class="col-md-3">
 	</div>
 	<div class="col-md-2" style="margin-top: 20px">
-		<a href="#/newlist" class="btn btn-success">Create a New List</a>
 	</div>
-	<div class="col-md-4" style="border: 1px solid black; height: 200px; overflow: auto; margin-top: 20px">
-		<p ng-repeat="list in lists | orderBy: 'created_at':true">{{list.title}} - {{list.dateString}}</p>
+	<div class="col-md-4">
+		<h3 style="text-align: center">My Lists</h3>
+		<a style="text-align: left; margin-bottom: -35px" href="#/newlist" class="btn btn-success">Add List</a>
+
+		<form style="text-align: right">
+			<input type="text" placeholder="Search..." ng-model="list_filter">
+		</form>
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-4">
+		<div style="border: 1px solid black; height: 300px; overflow: auto; margin-top: 10px; padding: 15px 0px 0px 5px">
+			<div ng-repeat="list in lists | filter:list_filter | orderBy: 'created_at':true">
+				<p>{{list.title}} <span style="color: grey">- {{list.dateString}}</span></p>
+				<p><button type="button" class="btn btn-primary btn-xs">Edit</button><button style="margin-left: 5px" type="button" class="btn btn-danger btn-xs">Delete</button><p>
+				<hr>
+			</div>
+		</div>
 	</div>
 	<div class="col-md-2">
 	</div>
