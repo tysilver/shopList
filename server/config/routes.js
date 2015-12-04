@@ -1,5 +1,5 @@
 var users = require('../controllers/users.js')
-// var topics = require('../controllers/topics.js')
+var lists = require('../controllers/lists.js')
 // var posts = require('../controllers/posts.js')
 // var comments = require('../controllers/comments.js')
 
@@ -17,11 +17,11 @@ module.exports = function(app){
 	app.get('/newestUser', function (req, res){
 		users.newest(req, res);
 	});
+	app.post('/newList', function (req, res){
+		lists.add(req, res);
+	});
 	// app.get('/topics', function (req, res){
 	// 	topics.get_all(req, res);
-	// });
-	// app.post('/newTopic/:userId', function (req, res){
-	// 	topics.add(req, res);
 	// });
 	// app.get('/oneTopic/:topic_id', function (req, res){
 	// 	topics.get_one(req, res);

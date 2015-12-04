@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-// var Topic = mongoose.model('Topic');
+var List = mongoose.model('List');
 var User = mongoose.model('User');
 // var Post = mongoose.model('Post');
 

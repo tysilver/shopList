@@ -1,5 +1,5 @@
 myAppModule.controller('newListController', ['$scope', '$location', '$routeParams', 'userFactory', function ($scope, $location, $routeParams, userFactory){
-	$scope.topics = [];
+	$scope.items = [];
 	$scope.current_user;
 
 	userFactory.getCurrentUser(function (data){
@@ -9,6 +9,18 @@ myAppModule.controller('newListController', ['$scope', '$location', '$routeParam
             $location.path('/')
         }
     });
+
+    $scope.addItem = function(){
+		$scope.items.push({item: $scope.newItem.name, user: $scope.current_user.name})
+		console.log($scope.items)
+		$scope.newItem = ""
+	};
+
+	$scope.logout = function(){
+		userFactory.logout();
+		$scope.current_user = {};
+		$location.path('/');
+	}
 
 	// userFactory.getTopics(function (data){
 	// 	$scope.topics = data;
@@ -27,11 +39,5 @@ myAppModule.controller('newListController', ['$scope', '$location', '$routeParam
 	// $scope.removeTopic = function(topic){
 	// 	userFactory.removeTopic(topic);
 	// }
-
-	$scope.logout = function(){
-		userFactory.logout();
-		$scope.current_user = {};
-		$location.path('/');
-	}
 	
 }]);

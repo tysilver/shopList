@@ -1,12 +1,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var UserSchema = new mongoose.Schema({
-	name: String,
+var ListSchema = new mongoose.Schema({
+	title: String,
 	created_at: Date,
-	lists: [{type: Schema.Types.ObjectId, ref: 'List'}],
+	updated_at: Date,
+	users: [{type: Schema.Types.ObjectId, ref: 'User'}],
+	items: [],
 	// posts: [{type: Schema.Types.ObjectId, ref: 'Post'}],
 	// comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });
 
-mongoose.model('User', UserSchema);
+mongoose.model('List', ListSchema);
