@@ -20,6 +20,14 @@ myAppModule.controller('newListController', ['$scope', '$location', '$routeParam
 		userFactory.logout();
 		$scope.current_user = {};
 		$location.path('/');
+	};
+
+	$scope.saveList = function() {
+		$scope.newList.created_at = new Date();
+		$scope.newList.items = $scope.items;
+		userFactory.addList($scope.newList, function (){
+			$location.path('/profile')
+		})
 	}
 
 	// userFactory.getTopics(function (data){

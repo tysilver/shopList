@@ -17,12 +17,12 @@ module.exports = function(app){
 	app.get('/newestUser', function (req, res){
 		users.newest(req, res);
 	});
-	app.post('/newList', function (req, res){
+	app.post('/newList/:userId', function (req, res){
 		lists.add(req, res);
 	});
-	// app.get('/topics', function (req, res){
-	// 	topics.get_all(req, res);
-	// });
+	app.get('/lists/:userId', function (req, res){
+		lists.get_all(req, res);
+	});
 	// app.get('/oneTopic/:topic_id', function (req, res){
 	// 	topics.get_one(req, res);
 	// });

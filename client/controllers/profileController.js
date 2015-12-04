@@ -1,5 +1,5 @@
 myAppModule.controller('profileController', ['$scope', '$location', '$routeParams', 'userFactory', function ($scope, $location, $routeParams, userFactory){
-	$scope.topics = [];
+	$scope.lists = [];
 	$scope.current_user;
 
 	userFactory.getCurrentUser(function (data){
@@ -10,9 +10,9 @@ myAppModule.controller('profileController', ['$scope', '$location', '$routeParam
         }
     });
 
-	// userFactory.getTopics(function (data){
-	// 	$scope.topics = data;
-	// });
+	userFactory.getLists(function (data){
+		$scope.lists = data;
+	});
 
 	// $scope.addTopic = function(){
 	// 	userFactory.getCurrentUser(function (data){

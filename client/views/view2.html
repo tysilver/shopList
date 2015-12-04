@@ -2,7 +2,7 @@
 	<div class="col-md-3">
 	</div>
 	<div class="col-md-4">
-		<h2 style="margin-top: 0px">Welcome, {{current_user.name.split(" ")[0]}}!</h2>
+		<h2 style="margin-top: 0px">Welcome, {{current_user.name}}!</h2>
 	</div>
 	<div class="col-md-1">
 	</div>
@@ -19,6 +19,7 @@
 		<a href="#/newlist" class="btn btn-success">Create a New List</a>
 	</div>
 	<div class="col-md-4" style="border: 1px solid black; height: 200px; overflow: auto; margin-top: 20px">
+		<p ng-repeat="list in lists">{{list.title}}</p>
 	</div>
 	<div class="col-md-2">
 	</div>

@@ -6,7 +6,7 @@ var User = mongoose.model('User');
 module.exports = (function(){
 	return {
 		add: function (req, res){
-			User.findOne({_id: req.body.info.userId}, function (error, user){
+			User.findOne({_id: req.params.userId}, function (error, user){
 				if (error) {
 					console.log("we got errors getting one user in our lists.js add list method: ");
 					console.log(error)
@@ -14,12 +14,12 @@ module.exports = (function(){
 					console.log("We got the one user! Now time to add the list to the user and user to list.");
 					var newUserId = user._id;
 					var new_list = new List({title: req.body.info.title, items: req.body.info.items, created_at: req.body.info.created_at});
-					new_list.users.append = newUserId;
+					new_list.users.push(user);
 					console.log("and now we created a new list.  It is: ")
 					console.log(new_list)
 					new_list.save(function (error1, list){
 						if(error1){
-							console.log("We have errors adding the new list: " + new_list.list)
+							console.log("We have errors adding the new list: " + new_list.title)
 						}else{
 							console.log("We added the new list!")
 							User.update({_id: req.params.userId}, {$push: {lists: list}}, function (err, user) {
@@ -36,17 +36,17 @@ module.exports = (function(){
 				}
 			});
 		},
-	// 	get_all: function(req, res){
-	// 		User.find({}, function (err, data){
-	// 			if (err){
-	// 				console.log("We got an error getting all users")
-	// 				res.json({error: err})
-	// 			} else {
-	// 				console.log("We got all users in users.js")
-	// 				res.json(data);
-	// 			}
-	// 		})
-	// 	},
+		get_all: function(req, res){
+			List.find({ users: req.params.userId } , function (err, data){
+				if (err){
+					console.log("We got an error getting all lists from this user")
+					res.json({error: err})
+				} else {
+					console.log("We got all lists from this user in lists.js")
+					res.json(data);
+				}
+			})
+		},
 	// 	get_one: function(req, res){
 	// 		User.findOne({_id: req.params.user_id}, function (err, data){
 	// 			if (err) {

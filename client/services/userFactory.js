@@ -2,7 +2,7 @@ myAppModule.factory('userFactory', function ($http) {
 	var factory = {};
 	var users = [];
 	var current_user = {}
-	var topics = [];
+	var lists = [];
 	var current_topic_posts = [];
 
 	// FOR USERS:
@@ -41,40 +41,41 @@ myAppModule.factory('userFactory', function ($http) {
 		});
 	};
 	factory.getJohn = function(callback){
-		$http.get('/oneUser/566078c6de4b98d69cff784c').success(function (output){
+		$http.get('/oneUser/56612be8321ac688a47c7d14').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
 			callback(current_user)
 		});
 	};
 	factory.getJane = function(callback){
-		$http.get('/oneUser/566078ccde4b98d69cff784d').success(function (output){
+		$http.get('/oneUser/56612bf2321ac688a47c7d15').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
 			callback(current_user)
 		});
 	};
 
-	// FOR TOPICS:
-	factory.getTopics = function(callback){
-		$http.get('/topics').success(function (output){
-			topics = [];
+	// FOR LISTS:
+	factory.getLists = function(callback){
+		$http.get('/lists/' + current_user._id).success(function (output){
+			lists = [];
 			for (var i = 0; i < output.length; i++) {
-				topics.push(output[i]);
+				lists.push(output[i]);
 			}
-			callback(topics);
+			callback(lists);
+		});
+	};
+
+	factory.addList = function(info, callback) {
+		$http.post('/newList/' + current_user._id, {info}).success(function (output){
+			lists.push(output);
+			callback()
 		});
 	};
 
 	factory.getOneTopic = function(topic_id, callback){
 		$http.get('/oneTopic/' + topic_id).success(function (output){
 			callback(output)
-		});
-	};
-
-	factory.addTopic = function(info) {
-		$http.post('/newTopic/' + info.user_id, {info}).success(function (output){
-			topics.push(output);
 		});
 	};
 
