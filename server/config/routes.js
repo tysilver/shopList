@@ -17,6 +17,9 @@ module.exports = function(app){
 	app.get('/newestUser', function (req, res){
 		users.newest(req, res);
 	});
+	app.post('/friendship/:otherUserId', function (req, res){
+		users.friendship(req, res);
+	});
 	app.post('/newList/:userId', function (req, res){
 		lists.add(req, res);
 	});

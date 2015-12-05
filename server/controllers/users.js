@@ -48,6 +48,31 @@ module.exports = (function(){
 					res.json(data)
 				}
 			});
+		},
+		friendship: function(req, res) {
+			User.update({_id: req.body.currentUser._id}, { $push: { users: req.params.otherUserId } }, function(error, user) {
+				if(error) {
+					console.log("We have some errors to deal with updating the user's users...")
+				} else {
+					console.log(user)
+					User.update({_id: req.params.otherUserId}, { $push: { users: req.body.currentUser._id } }, function(error1, user1) {
+						if (error1) {
+							console.log("Error updating friendship")
+						} else {
+							console.log("Got done with updating friendship!")
+							User.findOne({_id: req.params.otherUserId}, function (err, data){
+								if (err) {
+									console.log("we got errors getting one user");
+								} else {
+									console.log("We got the one user!")
+									console.log(data)
+									res.json(data);
+								}
+							});
+						}
+					})
+				}
+			});
 		}
 	}
 })();

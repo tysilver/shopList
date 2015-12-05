@@ -1,4 +1,42 @@
 <div class="row">
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-8">
+		<nav class="navbar navbar-default">
+		    <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+			      	</button>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      	<ul class="nav navbar-nav">
+			      		<li><a href="#/">Home</a></li>
+						<li><a href="#/shopmates">My Shopmates</a></li>
+				        <!-- <li class="dropdown">
+							<a href="#/profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/profile">My Info</a></li>
+								<li><a href="#/profile">My Shopmates</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#/profile" ng-click="logout()">Log out</a></li>
+							</ul>
+				        </li> -->
+			      	</ul>
+			    </div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+<div class="row">
 	<div class="col-md-3">
 	</div>
 	<div class="col-md-4">
@@ -13,11 +51,9 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-2">
 	</div>
-	<div class="col-md-2" style="margin-top: 20px">
-	</div>
-	<div class="col-md-4">
+	<div class="col-md-4" style="margin-top: 20px">
 		<h3 style="text-align: center">My Lists</h3>
 		<a style="text-align: left; margin-bottom: -35px" href="#/newlist" class="btn btn-success">Add List</a>
 
@@ -25,22 +61,26 @@
 			<input type="text" placeholder="Search..." ng-model="list_filter">
 		</form>
 	</div>
+	<div class="col-md-4">
+	</div>
 	<div class="col-md-2">
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-3">
-	</div>
 	<div class="col-md-2">
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-4" style="margin-bottom: 20px">
 		<div style="border: 1px solid black; height: 300px; overflow: auto; margin-top: 10px; padding: 15px 0px 0px 5px">
 			<div ng-repeat="list in lists | filter:list_filter | orderBy: 'created_at':true">
-				<p><a href="#/list/{{list._id}}">{{list.title}}</a><span style="color: grey">- {{list.dateString}}</span></p>
+				<p><a href="#/list/{{list._id}}">{{list.title}}</a><span style="color: grey"> - {{list.dateString}}</span></p>
 				<p><a href="#/edit/list/{{list._id}}" class="btn btn-primary btn-xs">Edit</a><button style="margin-left: 5px" type="button" class="btn btn-danger btn-xs" ng-click="deleteList(list)">Delete</button><p>
 				<hr>
 			</div>
 		</div>
+	</div>
+	<div class="col-md-4">
+		<h2>Search for family or housemates that you shop with!</h2>
+		<a href="#/search" class="btn btn-success">Search Users</a>
 	</div>
 	<div class="col-md-2">
 	</div>

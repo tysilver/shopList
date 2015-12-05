@@ -22,6 +22,14 @@ myAppModule.config(function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/view5.html',
 			controller: 'editListController'
 		})
+		.when('/search',{
+			templateUrl: 'views/view6.html',
+			controller: 'findUserController'
+		})
+		.when('/shopmates',{
+			templateUrl: 'views/view7.html',
+			controller: 'shopmateController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

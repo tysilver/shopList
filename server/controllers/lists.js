@@ -80,6 +80,14 @@ module.exports = (function(){
 					console.log("We got an error removing the list.")
 				} else {
 					console.log(" - That was the list we removed?")
+					User.update({}, {$pull: {lists: req.body.list._id }}, {multi: true}, function (error, data){
+						if (error) {
+							console.log("There was an error updating users")
+							console.log(error)
+						} else {
+							console.log("updated all users")
+						}
+					})
 					res.json(data)
 				}
 			});
