@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-5">
+		<!-- CANCEL AND GO BACK -->
+		<a href="#/profile" class="btn btn-default">Back to Profile</a>
+	</div>
+	<div class="col-md-2">
+		<!-- LOGOUT BUTTON -->
+		<button ng-click="logout()" class="btn btn-primary">Logout</button>
+	</div>
+	<div class="col-md-2">
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
+		<!-- HEADER -->
+		<h2 style="text-align: center; text-decoration: underline">My Shopmates</h2>
+	</div>
+	<div class="col-md-4">
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
+		<div>
+			<ul>
+				<li ng-repeat="user in users">{{user.name}}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-4">
+	</div>
+</div>

@@ -8,7 +8,7 @@ myAppModule.factory('userFactory', function ($http) {
 	// FOR USERS:
 	factory.getUsers = function(callback){
 		$http.get('/users').success(function (output){
-			users = output
+			users = output;
 			// if (users.length < 1) {
 			// 	for (var i = 0; i < output.length; i++) {
 			// 		users.push(output[i]);
@@ -41,14 +41,14 @@ myAppModule.factory('userFactory', function ($http) {
 		});
 	};
 	factory.getJohn = function(callback){
-		$http.get('/oneUser/56628140d202775fadc50fc8').success(function (output){
+		$http.get('/oneUser/56632e870d4dab4bb1bd86de').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
 			callback(current_user)
 		});
 	};
 	factory.getJane = function(callback){
-		$http.get('/oneUser/56628143d202775fadc50fc9').success(function (output){
+		$http.get('/oneUser/56632e8c0d4dab4bb1bd86df').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
 			callback(current_user)
@@ -56,7 +56,8 @@ myAppModule.factory('userFactory', function ($http) {
 	};
 	factory.createFriendship = function(otherUserId, currentUser, callback){
 		$http.post('/friendship/' + otherUserId, {currentUser}).success(function (output){
-			callback(output)
+			current_user = output
+			callback(current_user)
 		})
 	}
 

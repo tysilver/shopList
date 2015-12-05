@@ -60,7 +60,7 @@ module.exports = (function(){
 							console.log("Error updating friendship")
 						} else {
 							console.log("Got done with updating friendship!")
-							User.findOne({_id: req.params.otherUserId}, function (err, data){
+							User.findOne({_id: req.body.currentUser._id}, function (err, data){
 								if (err) {
 									console.log("we got errors getting one user");
 								} else {
