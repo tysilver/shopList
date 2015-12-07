@@ -15,6 +15,9 @@ module.exports = (function(){
 					var newUserId = user._id;
 					var new_list = new List({title: req.body.info.title, items: req.body.info.items, created_at: req.body.info.created_at});
 					new_list.users.push(user);
+					for (var j = 0; j < req.body.info.usersFriends.length; j++) {
+						new_list.users.push(req.body.info.usersFriends[j])
+					}
 					console.log("and now we created a new list.  It is: ")
 					console.log(new_list)
 					new_list.save(function (error1, list){
@@ -22,11 +25,21 @@ module.exports = (function(){
 							console.log("We have errors adding the new list: " + new_list.title)
 						}else{
 							console.log("We added the new list!")
-							User.update({_id: req.params.userId}, {$push: {lists: list}}, function (err, user) {
+							User.update({_id: req.params.userId}, {$push: {lists: list}}, function (err, user1) {
 							    if (err) {
 							        console.log("We have some errors to deal with.")
 							    } else {
-							        console.log(user)
+							        console.log(user1)
+							        for (var i = 0; i < req.body.info.usersFriends.length; i++) {
+							        	User.update({_id: req.body.info.usersFriends[i]._id }, {$push: {lists: list}}, function (err1, user2) {
+										    if (err1) {
+										        console.log("We have some errors to deal with.")
+										    } else {
+										    	console.log("Updated other user " + i + ":")
+										        console.log(user2)
+										    }
+										});
+							        }
 							    }
 							});
 							console.log(list)
@@ -40,6 +53,7 @@ module.exports = (function(){
 			List.find({ users: req.params.userId } , function (err, data){
 				if (err){
 					console.log("We got an error getting all lists from this user")
+					console.log(err)
 					res.json({error: err})
 				} else {
 					console.log("We got all lists from this user in lists.js")

@@ -13,7 +13,7 @@ myAppModule.controller('findUserController', ['$scope', '$location', '$routePara
 				for (var i = 0; i < data1.length; i++) {
 					console.log("We entered the for loop " + i + " times")
 					console.log(data1[i])
-					if ($scope.current_user.users.indexOf(data1[i]._id) > 0) {
+					if ($scope.current_user.users.indexOf(data1[i]._id) > -1) {
 						console.log($scope.current_user.users.indexOf(data1[i]))
 						console.log("The first if was run")
 					} else if ($scope.current_user._id == data1[i]._id) {

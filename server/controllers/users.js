@@ -12,6 +12,7 @@ module.exports = (function(){
 					res.json({error: err})
 				} else {
 					console.log("We got all users in users.js")
+					console.log(data)
 					res.json(data);
 				}
 			})

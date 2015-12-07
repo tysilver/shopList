@@ -41,14 +41,14 @@ myAppModule.factory('userFactory', function ($http) {
 		});
 	};
 	factory.getJohn = function(callback){
-		$http.get('/oneUser/56632e870d4dab4bb1bd86de').success(function (output){
+		$http.get('/oneUser/5665da2064064210b50c99f5').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
 			callback(current_user)
 		});
 	};
 	factory.getJane = function(callback){
-		$http.get('/oneUser/56632e8c0d4dab4bb1bd86df').success(function (output){
+		$http.get('/oneUser/5665da2664064210b50c99f6').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
 			callback(current_user)

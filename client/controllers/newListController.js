@@ -46,6 +46,8 @@ myAppModule.controller('newListController', ['$scope', '$location', '$routeParam
 				$scope.newList.usersFriends.push($scope.currentUsersFriends[i])
 			}
 		}
+		console.log("The user's friends selected are: ")
+		console.log($scope.newList.usersFriends)
 		userFactory.addList($scope.newList, function (){
 			$location.path('/profile')
 		})

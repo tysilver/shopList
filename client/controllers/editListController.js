@@ -3,7 +3,7 @@ myAppModule.controller('editListController', ['$scope', '$location', '$routePara
 	$scope.current_user = {};
 	$scope.items = []
 	$scope.count = 0
-	$scope.message;
+	$scope.message = ''
 
 	userFactory.getCurrentUser(function (data){
         $scope.current_user = data;
@@ -19,6 +19,8 @@ myAppModule.controller('editListController', ['$scope', '$location', '$routePara
 	});
 
 	$scope.addItem = function(){
+    	$scope.count++
+    	$scope.message = "When you are finished, please click 'Update List' to save this list."
 		$scope.items.unshift({item: $scope.newItem.name, user: $scope.current_user.name})
 		console.log($scope.items)
 		$scope.newItem = ""
