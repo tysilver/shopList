@@ -23,15 +23,12 @@ myAppModule.controller('shopmateController', ['$scope', '$location', '$routePara
         }
     });
 
-	// userFactory.getCurrentShopmates(function (data){
-	// 	$scope.lists = data;
-	// });
-
-	// $scope.deleteList = function (list) {
-	// 	console.log(list.title)
-	// 	$scope.lists.splice($scope.lists.indexOf(list), 1)
-	// 	userFactory.deleteList(list);
-	// };
+	$scope.removeUser = function (userId) {
+		console.log(userId)
+		userFactory.unfriendUsers(userId, function (data){
+			$scope.users.splice($scope.users.indexOf(data), 1)
+		})
+	};
 
 	$scope.logout = function(){
 		userFactory.logout();

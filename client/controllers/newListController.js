@@ -3,6 +3,7 @@ myAppModule.controller('newListController', ['$scope', '$location', '$routeParam
 	$scope.current_user = {};
 	$scope.users = []
 	$scope.currentUsersFriends = [];
+	$scope.message = ""
 
 	userFactory.getCurrentUser(function (data){
         $scope.current_user = data;
@@ -10,6 +11,9 @@ myAppModule.controller('newListController', ['$scope', '$location', '$routeParam
         	console.log("WARNING: USER MUST LOG IN BEFORE VIEWING LIST CREATION PAGE AGAIN.")
             $location.path('/')
         } else {
+        	if ($scope.current_user.users.length == 0) {
+        		$scope.message = "You haven't added any shoppers yet."
+        	}
         	userFactory.getUsers(function (data) {
         		$scope.users = data;
         		for (var i = 0; i < $scope.users.length; i++) {

@@ -28,7 +28,7 @@
 	<div class="col-md-4">
 		<div>
 			<ul>
-				<li ng-repeat="user in users">{{user.name}}</li>
+				<li ng-repeat="user in users">{{user.name}} <button class="btn btn-danger" ng-click="removeUser(user._id)">remove</button></li>
 			</ul>
 		</div>
 	</div>

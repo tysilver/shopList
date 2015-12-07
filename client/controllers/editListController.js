@@ -30,7 +30,7 @@ myAppModule.controller('editListController', ['$scope', '$location', '$routePara
 		$scope.count += 1
 	    $scope.items.splice(index, 1);
 	    if ($scope.count > 0) {
-	    	$scope.message = "You must click 'Update List' to save changes"
+	    	$scope.message = "When you are finished, please click 'Update List' to save this list."
 	    }
 	}
 

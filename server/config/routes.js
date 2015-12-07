@@ -20,6 +20,9 @@ module.exports = function(app){
 	app.post('/friendship/:otherUserId', function (req, res){
 		users.friendship(req, res);
 	});
+	app.post('/unfriend/:userId', function (req, res){
+		users.unfriend(req, res);
+	});
 	app.post('/newList/:userId', function (req, res){
 		lists.add(req, res);
 	});

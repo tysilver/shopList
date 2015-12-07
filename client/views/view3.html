@@ -28,6 +28,7 @@
 		</div>
 		<div class="col-md-4">
 			<h3>Select Shopmates to share with:</h3>
+			{{message}}
 			<label ng-repeat="friend in currentUsersFriends">
         		<input type="checkbox" value="{{friend.name}}" ng-model="friend.selected">{{friend.name}}
         	</label>

@@ -13,14 +13,14 @@ myAppModule.controller('usersController', ['$scope', '$location', 'userFactory',
 
     $scope.getJohn = function(){
     	userFactory.getJohn(function (data) {
-    		$scope.current_user = data
+    		// $scope.current_user = data
 			$location.path('/profile')
 		});
 	}
 
 	$scope.getJane = function(){
     	userFactory.getJane(function (data) {
-    		$scope.current_user = data
+    		// $scope.current_user = data
 			$location.path('/profile')
 		});
 	}

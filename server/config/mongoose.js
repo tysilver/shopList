@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var fs = require('fs');
 
 // connect to our database ONCE
-mongoose.connect('mongodb://localhost/shopList3');
+mongoose.connect('mongodb://localhost/shopList5');
 
 // copies the directory path, concats it with the path from
 // the config folder to the models folder.

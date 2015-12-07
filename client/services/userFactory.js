@@ -41,14 +41,14 @@ myAppModule.factory('userFactory', function ($http) {
 		});
 	};
 	factory.getJohn = function(callback){
-		$http.get('/oneUser/5665da2064064210b50c99f5').success(function (output){
+		$http.get('/oneUser/5665fef3134a0febb6ec4996').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
 			callback(current_user)
 		});
 	};
 	factory.getJane = function(callback){
-		$http.get('/oneUser/5665da2664064210b50c99f6').success(function (output){
+		$http.get('/oneUser/5665fef7134a0febb6ec4997').success(function (output){
 			console.log("The current user chosen is: " + output.name)
 			current_user = output
 			callback(current_user)
@@ -59,9 +59,19 @@ myAppModule.factory('userFactory', function ($http) {
 			current_user = output
 			callback(current_user)
 		})
-	}
+	};
+	factory.unfriendUsers = function(userId, callback) {
+		$http.post('/unfriend/' + userId, {current_user}).success(function (output){
+			console.log(output[0])
+			current_user = output[1]
+			callback(output[0])
+		})
+	};
 
+	//
 	// FOR LISTS:
+	//
+
 	factory.getLists = function(callback){
 		$http.get('/lists/' + current_user._id).success(function (output){
 			lists = [];

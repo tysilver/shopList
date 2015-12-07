@@ -74,6 +74,42 @@ module.exports = (function(){
 					})
 				}
 			});
+		},
+		unfriend: function(req, res) {
+			User.update({_id: req.body.current_user._id }, { $pull: { users: req.params.userId } }, function(error, user) {
+				if (error) {
+					console.log("We have some errors to deal with removing the current user's user...")
+				} else {
+					console.log(user)
+					User.update({_id: req.params.userId}, { $pull: { users: req.body.current_user._id } }, function(error1, user1) {
+						if (error1) {
+							console.log("Error updating chosen user's users array...")
+						} else {
+							console.log("Got done with removing both users!")
+							var BothUsers = []
+							User.findOne({_id: req.params.userId}, function (err, data){
+								if (err) {
+									console.log("we got errors getting one user");
+								} else {
+									console.log("We got the one user!")
+									console.log(data)
+									BothUsers.push(data)
+								}
+							});
+							User.findOne({_id: req.body.current_user._id}, function (err1, data1){
+								if (err1) {
+									console.log("we got errors getting one user");
+								} else {
+									console.log("We got the one user!")
+									console.log(data1)
+									BothUsers.push(data1)
+									res.json(BothUsers)
+								}
+							});
+						}
+					})
+				}
+			});
 		}
 	}
 })();
