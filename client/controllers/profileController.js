@@ -4,7 +4,7 @@ myAppModule.controller('profileController', ['$scope', '$location', '$routeParam
 
 	userFactory.getCurrentUser(function (data){
         $scope.current_user = data;
-        if (!$scope.current_user.hasOwnProperty("created_at")) {
+       	if (!$scope.current_user.hasOwnProperty("created_at")) {
         	console.log("WARNING: USER MUST LOG IN BEFORE VIEWING PROFILE PAGE AGAIN.")
             $location.path('/')
         }
