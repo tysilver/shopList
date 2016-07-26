@@ -14,7 +14,9 @@ myAppModule.controller('usersController', ['$scope', '$location', 'userFactory',
     $scope.getJohn = function(){
     	userFactory.getJohn(function (data) {
     		// $scope.current_user = data
-			$location.path('/profile')
+			setTimeout(function(){
+                                $location.path('/profile')
+                        }, 0)
 		});
 	}
 
