@@ -21,7 +21,9 @@ myAppModule.controller('usersController', ['$scope', '$location', 'userFactory',
 	$scope.getJane = function(){
     	userFactory.getJane(function (data) {
     		// $scope.current_user = data
-			$location.path('/profile')
+			setTimeout(function(){
+				$location.path('/profile')
+			}, 0)
 		});
 	}
 
